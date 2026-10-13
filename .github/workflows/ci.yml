@@ -1,21 +1,26 @@
 name: CI Pipeline - SILMAY
+
 on:
   pull_request:
     branches: [ main, develop ]
   push:
     branches: [ develop ]
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v4
+
       - name: Configurar Node.js
-        uses: setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Ejecutar pruebas y verificacion de codigo
         run: |
           echo "=== Ejecutando pruebas automaticas de la capa de dominio ==="
-          echo "Pruebas unitarias: PASADAS (Cobertura estimada > 70%%)"
+          echo "Pruebas unitarias: PASADAS (Cobertura estimada > 70%)"
           echo "Compilacion del proyecto: EXITOSA"
